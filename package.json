@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "tailwind:init": "tailwindcss init -p",
+    "tailwind:build": "tailwindcss -i ./src/styles.css -o ./dist/output.css --watch",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -20,7 +22,9 @@
     "@angular/platform-server": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.16",
+    "bootstrap": "^5.3.8",
     "express": "^4.18.2",
+    "ngx-cookie-service": "^19.1.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -38,6 +42,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "tailwindcss": "^4.1.13",
     "typescript": "~5.7.2"
   }
 }

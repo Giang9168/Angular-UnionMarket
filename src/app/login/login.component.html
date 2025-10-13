@@ -1,0 +1,49 @@
+<div class="login ">
+   <form [formGroup]="form">
+
+      <div class="title">
+         <h3> Đăng Nhập </h3>
+      </div>
+
+
+      <div class="inputLogin">
+         <div class="inputAndMes">
+            <label for="username">Tên Đăng Nhập</label>
+            <div>
+               <input id="username" (focus)="Focus()" formControlName="username" class="d-inline" type="text"
+                  name="Username" placeholder="Enter your Usename" />
+               <div [style.visibility]="isInvalid('username') ? 'visible' : 'hidden'">
+                  <small class="message" [style.visibility]="form.get('username')?.errors?.['required']">Username is
+                     required</small>
+               </div>
+            </div>
+         </div>
+
+
+
+         <div class="inputAndMes">
+            <label for="password">Mật Khẩu</label>
+            <div>
+               <input id="password" (focus)="Focus()" formControlName="password" class="d-inline" type="password"
+                  name="Password" placeholder="Enter your password  " />
+               <div [style.visibility]="isInvalid('password') ? 'visible' : 'hidden'">
+                  <small class="message" [style.visibility]="form.get('password')?.errors?.['required']">Password is
+                     required</small>
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+
+      <div>
+         <small class="message" [style.visibility]="message() ? 'visible' : 'hidden'">
+            {{message()}}
+         </small>
+         <div class="reAndBut">
+            <h6>Đăng ký ngay</h6>
+            <button class="btnCss" (click)="onSubmit()" type="submit"> Đăng nhập</button>
+         </div>
+      </div>
+   </form>
+</div>
