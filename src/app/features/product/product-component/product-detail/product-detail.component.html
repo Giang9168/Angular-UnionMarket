@@ -1,1 +1,14 @@
-<p>product-detail works!</p>
+<div>
+    <div *ngIf="productDetail">
+        <h3>Thông tin chi tiết sản phẩm</h3>
+        <h6>Id: {{ productDetail.id }}</h6>
+        <h6>Tên sản phẩm: {{ productDetail.name }}</h6>
+        <h6>Giá:{{productDetail.price}}</h6>
+        <h6>Mô tả: {{ productDetail.description }}</h6>
+        <button (click)="close()">Đóng</button>
+    </div>
+
+    <div *ngIf="!productDetail">
+        <p>Đang tải dữ liệu sản phẩm...</p>
+    </div>
+</div>

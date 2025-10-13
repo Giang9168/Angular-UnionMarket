@@ -1,1 +1,23 @@
-<p>product-form works!</p>
+<div class="product-form-container">
+    <h3>{{ isEditMode ? 'Chỉnh sửa sản phẩm' : 'Thêm sản phẩm mới' }}</h3>
+    <form [formGroup]="formnew">
+        <div class="form-group">
+            <label for="productName">Tên sản phẩm</label>
+            <input id="productName" type="text" formControlName="name" placeholder="Ví dụ: Sách Angular">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Giá</label>
+            <input id="productPrice" type="number" formControlName="price" placeholder="Ví dụ: 150000">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Mô tả</label>
+            <input id="productPrice" type="text" formControlName="description" placeholder="Mô tả">
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-cancel" (click)="cancel()">Hủy</button>
+            <button class="btn-save" (click)="buttonFormAddorUpdate()"> {{ isEditMode ? 'Update' : 'Add'
+                }}</button>
+        </div>
+    </form>
+</div>
