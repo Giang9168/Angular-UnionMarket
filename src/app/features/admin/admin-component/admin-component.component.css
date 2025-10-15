@@ -1,0 +1,33 @@
+.containe {
+  display: grid;
+  grid-template-columns: 15% 85%; /* 1/5 và 4/5 */
+  height: 100vh;
+  background-color: rgb(255, 255, 255)
+}
+
+.side {
+  background-color: rgb(255, 255, 255);
+}
+app-sidebar{
+  width: 100%;
+}
+.main-content {
+  display: grid;
+  grid-template-rows: 3fr 20fr; /* 1/20 và phần còn lại của 4/5 */
+  background-color: #edefe9;
+}
+.smalla{
+ display: flex;
+ flex: 0 0 auto;
+ justify-content: center;
+ align-items: center;
+}
+app-header{
+  width: 100%;
+}
+.maint{
+  width: 90%;
+  margin:0 auto ;
+  border-radius:20px ;
+  background-color: rgb(230, 221, 218);
+}

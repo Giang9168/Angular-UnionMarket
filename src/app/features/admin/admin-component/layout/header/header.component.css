@@ -1,0 +1,34 @@
+.navbare {
+  display: flex;
+  justify-content: space-between;
+  background-color: #bec1cd;
+  padding: 10px 20px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3), -2px -2px 5px rgba(255,255,255,0.2);
+  border-radius: 10px;
+  width: 90%;
+  flex: 0 0 auto; 
+  margin: 0 auto;
+  color: rgb(249, 248, 248);
+}
+.logos {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-linkst {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+ 
+}
+
+.nav-linkst li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-linkst li a:hover {
+  text-decoration: underline;
+}

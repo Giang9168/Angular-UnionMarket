@@ -6,6 +6,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
 import { CrudComponent } from './crud/crud.component';
+import { AdminComponentComponent } from './features/admin/admin-component/admin-component.component';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     {
@@ -20,9 +22,8 @@ export const routes: Routes = [
         ]
     },
     { path: "login", component: LoginComponent },
-    { path: "Admin", component: CrudComponent },
+    { path: "Admin", loadChildren: () => import('./features/admin/admin.router').then(m => m.ADMIN_ROUTES) },
 
-
-    { path: '**', component: PageNotFoundComponent }
+    { path: 'unauthorized', component: PageNotFoundComponent }
 
 ];

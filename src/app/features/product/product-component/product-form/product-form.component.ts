@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../product.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-form',
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })

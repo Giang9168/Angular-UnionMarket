@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ProductService } from '../../product.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../product.service';
+import { ProductFormComponent } from '../product-form/product-form.component';
+import { CommonModule } from '@angular/common';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
   selector: 'app-product-list',
-  imports: [],
+  imports: [ProductDetailComponent, ProductFormComponent, CommonModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -52,7 +55,7 @@ export class ProductListComponent {
     if (this.selectedProduct) {
       this.productService.updateProduct(this.selectedProduct.id, formData).subscribe((updatedProduct: any) => {
         console.log(this.selectedProduct.id + formData)
-        const index = this.products.findIndex(p => p.id === updatedProduct.id);
+        const index = this.products.findIndex((p: any) => p.id === updatedProduct.id);
         if (index !== -1) {
           this.products[index] = updatedProduct;
         }

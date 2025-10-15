@@ -1,0 +1,95 @@
+:host {
+  display: block;
+}
+
+.sidebar {
+  height: 100vh;
+  background-color: #ffffff;
+  padding-top: 20px;
+}
+ h2 {
+  font-family: "Bungee Spice", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  padding: 18px;
+  background-color: #ffffff;
+  margin: 0;
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 6px;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: flex;
+  color: black;
+  align-items: center;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-bottom: #a2357c solid 1px;
+  transition: background-color 0.3s ease, transform 0.5s ease;;
+  cursor: pointer;
+  position: relative; /* Cho mũi tên dropdown */
+}
+
+.nav-item fa-icon {
+  width: 20px;
+  margin-right: 15px;
+  font-size: 1.1rem;
+}
+
+.nav-item .nav-text {
+  flex-grow: 1;
+}
+
+.nav-item:hover {
+  color: #a2357c;
+  font-weight: bold;
+  transform: translate(-8px);
+}
+
+/* Style cho link đang active */
+.nav-item.active {
+  color: #a2357c;
+  font-weight: bold;
+}
+
+/* Style cho menu có con */
+.has-submenu .submenu-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #ecf0f1;
+  transition: transform 0.3s ease;
+}
+
+/* Xoay mũi tên khi menu được mở */
+li.open > .has-submenu .submenu-arrow {
+  transform: rotate(180deg);
+}
+
+/* Style cho menu con */
+.submenu {
+  list-style: none;
+  padding-left: 0;
+  background-color: #dfe2e4;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
+
+.submenu .nav-item {
+  padding-left: 45px; /* Thụt vào so với menu cha */
+}
+
+/* Hiệu ứng xổ ra của menu con */
+li.open .submenu {
+  max-height: 500px; /* Một giá trị đủ lớn để chứa hết các item */
+}

@@ -1,0 +1,30 @@
+<nav class="sidebar">
+    <ul class="nav-list">
+        <h2>CHỢ CÔNG ĐOÀN</h2>
+        <li *ngFor="let category of categories" [class.open]="category.isOpen">
+            <div *ngIf="category.children; else isLink">
+                <a class="nav-item has-submenu" (click)="toggleSubmenu(category)">
+                    <fa-icon [icon]="category.icon"></fa-icon>
+                    <span class="nav-text">{{ category.name }}</span>
+                    <span class="submenu-arrow"></span>
+                </a>
+                <ul class="submenu" *ngIf="category.isOpen">
+                    <li *ngFor="let child of category.children">
+                        <a class="nav-item" [routerLink]="child.path" routerLinkActive="active">
+                            <fa-icon [icon]="child.icon"></fa-icon>
+                            <span class="nav-text">{{ child.name }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <ng-template #isLink>
+                <a class="nav-item" [routerLink]="category.path" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    <fa-icon [icon]="category.icon"></fa-icon>
+                    <span class="nav-text">{{ category.name }}</span>
+                </a>
+            </ng-template>
+
+        </li>
+    </ul>
+</nav>

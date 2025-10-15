@@ -7,7 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:7133/WeatherForecast/login';
+  private apiUrl = 'http://localhost:5193/product/login';
 
   constructor(private http: HttpClient) { }
 

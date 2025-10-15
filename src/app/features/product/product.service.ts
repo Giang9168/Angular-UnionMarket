@@ -7,25 +7,25 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-    private apiUrl = "http://localhost:7133/WeatherForecast/product";
+    private apiUrl = "http://localhost:5193/product";
 
     constructor(private http: HttpClient) { }
 
     getProducts(): Observable<any[]> {
-        return this.http.get<any[]>(this.apiUrl);
+        return this.http.get<any[]>(this.apiUrl, { withCredentials: true });
     }
 
     getProduct(id: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/${id}`);
+        return this.http.get<any>(`${this.apiUrl}/${id}`, { withCredentials: true });
     }
 
     addProduct(product: any): Observable<any> {
-        return this.http.post(this.apiUrl, product);
+        return this.http.post(`${this.apiUrl}/add`, product, { withCredentials: true });
     }
     updateProduct(id: number, product: any): Observable<any> {
-        return this.http.put(`${this.apiUrl}/${id}`, product);
+        return this.http.put(`${this.apiUrl}/update/${id}`, product, { withCredentials: true });
     }
     deleteProduct(id: number): Observable<any> {
-        return this.http.delete(`${this.apiUrl}/${id}`);
+        return this.http.delete(`${this.apiUrl}/delete/${id}`, { withCredentials: true });
     }
 }
