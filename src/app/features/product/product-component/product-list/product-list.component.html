@@ -1,49 +1,51 @@
 <h2>Danh sách sản phẩm</h2>
-<button class="Add" (click)="add()">Thêm</button>
-<table class="styled-table">
-    <colgroup>
-        <col style="width: 17%;">
-        <col style="width: 17%;">
-        <col style="width: 17%;">
-        <col style="width: 17%;">
-        <col style="width: 32%;">
-    </colgroup>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Chức năng</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products">
-            <td>{{ product.id }}</td>
-            <td>{{ product.name}}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.description}}</td>
-            <td>
-                <div class="control">
-                    <button (click)="update(product)">Sửa</button><button
-                        (click)="delete(product.id)">Xoá</button><button (click)="detail(product.id)">Chi
-                        Tiết</button>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div *ngIf="isFormVisible" class="modal-overlay">
-    <div class="modal-content">
-        <app-product-form [initialData]="selectedProduct" (productSaved)="handleSave($event)"
-            (cancelled)="onFormCancelled()">
-        </app-product-form>
+<ng-container *ngIf="products && products.length > 0">
+    <button class="Add" (click)="add()">Thêm</button>
+    <table class="styled-table">
+        <colgroup>
+            <col style="width: 17%;">
+            <col style="width: 17%;">
+            <col style="width: 17%;">
+            <col style="width: 17%;">
+            <col style="width: 32%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.id }}</td>
+                <td>{{ product.name}}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description}}</td>
+                <td>
+                    <div class="control">
+                        <button (click)="update(product)">Sửa</button><button
+                            (click)="delete(product.id)">Xoá</button><button (click)="detail(product.id)">Chi
+                            Tiết</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="isFormVisible" class="modal-overlay">
+        <div class="modal-content">
+            <app-product-form [initialData]="selectedProduct" (productSaved)="handleSave($event)"
+                (cancelled)="onFormCancelled()">
+            </app-product-form>
+        </div>
     </div>
-</div>
 
 
-<div *ngIf="isFormDetailVisible" class="modal-overlay">
-    <div class="modal-content">
-        <app-product-detail [id]="selectId" (closeDetail)="close()"></app-product-detail>
+    <div *ngIf="isFormDetailVisible" class="modal-overlay">
+        <div class="modal-content">
+            <app-product-detail [id]="selectId" (closeDetail)="close()"></app-product-detail>
+        </div>
     </div>
-</div>
+</ng-container>

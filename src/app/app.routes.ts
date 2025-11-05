@@ -7,7 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
 import { CrudComponent } from './crud/crud.component';
 import { AdminComponentComponent } from './features/admin/admin-component/admin-component.component';
-import { adminGuard } from './guards/admin.guard';
+import { authGuard } from './guards/admin.guard';
+import { Role } from './guards/adminSevice';
 
 export const routes: Routes = [
     {
@@ -22,7 +23,12 @@ export const routes: Routes = [
         ]
     },
     { path: "login", component: LoginComponent },
-    { path: "Admin", loadChildren: () => import('./features/admin/admin.router').then(m => m.ADMIN_ROUTES) },
+    {
+        path: "Admin", canActivate: [authGuard], loadChildren: () => import('./features/admin/admin.router').then(m => m.ADMIN_ROUTES), data: {
+            // Yêu cầu là User, Manager, hoặc Admin
+            roles: [Role.User, Role.Manager, Role.Admin]
+        }
+    },
 
     { path: 'unauthorized', component: PageNotFoundComponent }
 

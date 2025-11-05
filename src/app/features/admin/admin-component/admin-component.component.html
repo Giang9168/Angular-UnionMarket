@@ -1,9 +1,9 @@
-<div class="containe">
+<div *ngIf="authService.user$ | async as user; else loading" class="containe">
     <div class="side">
         <app-sidebar></app-sidebar>
     </div>
     <div class="main-content">
-        <div class="smalla">
+        <div class="small">
             <app-header></app-header>
         </div>
         <div class="maint">
@@ -12,3 +12,8 @@
 
     </div>
 </div>
+<ng-template #loading>
+    <div class="text-center mt-5">
+        <p>loading....</p>
+    </div>
+</ng-template>

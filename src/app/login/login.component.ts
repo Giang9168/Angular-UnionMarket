@@ -3,7 +3,7 @@ import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 
-import { Route, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -13,15 +13,21 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) {
   }
 
   form = new FormGroup({
     username: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required])
   })
+  returnUrl = '/page1';
   Focus() {
     this.message.set("");
+  }
+
+  ngOnInit() {
+    // Lấy returnUrl từ query params
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/page1';
   }
 
   message = signal("")
@@ -36,8 +42,8 @@ export class LoginComponent {
       this.authService.login(this.form.get('username')?.value as string, this.form.get('password')?.value as string).subscribe({
         next: (res: any) => {
 
-          this.router.navigate(['/page1']);
-          localStorage.setItem("token", res.token)
+          this.router.navigateByUrl(this.returnUrl);
+
         },
         error: (err: HttpErrorResponse) => {
           if (err.status === 0) {
@@ -50,13 +56,9 @@ export class LoginComponent {
 
         }
       });
-
     }
     else {
       this.form.markAllAsTouched();
     }
-
-
-
   }
 }
