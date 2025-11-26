@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 import { Observable } from 'rxjs';
-import { AuthService } from './login/auth.service';
+import { AuthService } from './features/auth/login/auth.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { provideServerRendering } from '@angular/ssr';
 

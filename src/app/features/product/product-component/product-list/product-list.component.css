@@ -1,47 +1,67 @@
-.styled-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  font-family: sans-serif;
-  min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+/* =========================================
+   BỐ CỤC (TIÊU ĐỀ & NÚT THÊM)
+   ========================================= */
+.table-header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; 
 }
 
-.styled-table thead tr {
-  background-color: #009879;
-  color: #ffffff;
-  text-align: left;
+.table-header-controls h2 {
+  margin: 0; /* Xóa margin mặc định của h2 */
 }
 
-.styled-table th,
-.styled-table td {
-  padding: 12px 15px;
+:host ::ng-deep .compact-table .mat-sort-header-container {
+  /* Đây là chìa khóa: đổi căn lề từ trái sang giữa */
+  justify-content: center;
+ 
+}
+
+.Add {
+  margin-left: 0; 
+  margin-bottom: 10px;
+  width: 100px;
+  height: 30px;
+}
+
+/* =========================================
+   KHUNG CHỨA BẢNG (CÓ THANH CUỘN)
+   ========================================= */
+.table-container {
+  max-height: 450px;
+  background-color: rgb(250, 250, 250);
+  height: 450px;
+  overflow: auto;
+}
+.mdc-data-table__row {
+  height: 40px;
+ 
+}
+
+.mdc-data-table__header-cell,
+.mdc-data-table__cell {
+  padding: 4px 8px !important;
+  font-size: 15px;
   text-align: center;
 }
 
-.styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
+.compact-table .mat-mdc-header-row {
+  background-color: #2196f3;
+  color: #fff;
+    
 }
+.compact-table .mat-mdc-header-cell {
 
-.styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  color: #fff;
 }
-
-.styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+.compact-table .mat-mdc-row:hover {
+  background-color: #f2f2f2;
+  transition: 0.2s;
 }
-button{
-    width: 100px;
-    height: 30px;
-}
-.control{
-    display: flex;
-    justify-content: space-between;
-}
-.Add{
-  float: right;
-}
+/* =========================================
+   MODAL (FORM THÊM/SỬA) - Giữ nguyên
+   ========================================= */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -52,7 +72,6 @@ button{
   to { transform: translate(-50%, -50%); opacity: 1; }
 }
 
-/* Lớp phủ nền mờ */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -64,12 +83,11 @@ button{
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Cửa sổ dialog chứa form */
 .modal-content {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Căn giữa */
+  transform: translate(-50%, -50%);
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -78,4 +96,16 @@ button{
   max-width: 900px;
   z-index: 1001;
   animation: slideIn 0.3s ease-out;
+}
+
+.action-cell {
+  display: flex;
+  justify-content: center;   /* Giữ icon ở giữa ngang */
+  align-items: center;       /* Canh giữa dọc */
+  gap: 12px;                 /* Tạo khoảng cách giữa các icon */
+}
+
+.action-cell i {
+  cursor: pointer;
+  font-size: 15px;
 }

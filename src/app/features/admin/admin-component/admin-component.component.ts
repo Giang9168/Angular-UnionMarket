@@ -3,7 +3,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './layout/header/header.component';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../login/auth.service';
+import { AuthService } from '../../auth/login/auth.service';
 
 @Component({
   selector: 'app-admin-component',

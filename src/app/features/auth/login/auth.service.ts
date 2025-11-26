@@ -2,15 +2,26 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { BehaviorSubject, catchError, map, of, tap } from "rxjs"
 import { HttpErrorResponse } from '@angular/common/http';
-import { User } from '../guards/adminSevice';
+
 import { isPlatformBrowser } from '@angular/common';
 import { mapToCanActivate } from '@angular/router';
+export interface User {
+  username: string;
+  role: Role;
+}
 
+export enum Role {
+  Guest = 0,
+  User = 1,
+  Manager = 2,
+  Admin = 3
+  // Thêm bất kỳ role nào khác bạn có
+}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5193/product';
+  private apiUrl = 'http://localhost:5193/auth';
   private readonly USER_STORAGE_KEY = 'currentUser';
 
 
@@ -19,7 +30,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   initAuthCheck() {
-    return this.http.get<any>('http://localhost:5193/product/me', { withCredentials: true }).pipe(
+    return this.http.get<any>('http://localhost:5193/auth/me', { withCredentials: true }).pipe(
       tap(user => {
         console.log("✅ /me response:", user);
         this.currentUserSubject.next(user)

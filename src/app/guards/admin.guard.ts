@@ -1,9 +1,9 @@
 import { inject, PLATFORM_ID } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '../features/auth/login/auth.service';
 import { Request } from 'express';
 import { RequestHandlerFunction } from '@angular/ssr';
-import { Role } from './adminSevice';
+
 
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { catchError, map, of } from 'rxjs';
@@ -28,7 +28,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   return authService.initAuthCheck().pipe(
     map(user => {
       console.log(user)
-      if (user?.role == "Admin") {
+      if (user?.role == "ADMIN") {
         return true;
       }
       else {

@@ -3,9 +3,9 @@ import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { Page3Component } from './page3/page3.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './features/auth/login/login.component';
 import { TestComponent } from './test/test.component';
-import { CrudComponent } from './crud/crud.component';
+
 import { AdminComponentComponent } from './features/admin/admin-component/admin-component.component';
 import { authGuard } from './guards/admin.guard';
 import { Role } from './guards/adminSevice';
