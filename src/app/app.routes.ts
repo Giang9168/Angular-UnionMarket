@@ -7,8 +7,8 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { TestComponent } from './test/test.component';
 
 import { AdminComponentComponent } from './features/admin/admin-component/admin-component.component';
-import { authGuard } from './guards/admin.guard';
-import { Role } from './guards/adminSevice';
+import { authGuard } from './features/admin/guards/admin.guard';
+import { Role } from './features/admin/guards/adminSevice';
 
 export const routes: Routes = [
     {
