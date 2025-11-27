@@ -1,6 +1,6 @@
 import { inject, PLATFORM_ID } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../../auth/login/auth.service';
+import { AuthService } from '../features/auth/login/auth.service';
 import { Request } from 'express';
 import { RequestHandlerFunction } from '@angular/ssr';
 
