@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { PageModel } from '../../shared/models/category.model';
 
 @Injectable({
     providedIn: 'root'
@@ -11,8 +12,8 @@ export class ProductService {
 
     constructor(private http: HttpClient) { }
 
-    getProducts(): Observable<any[]> {
-        return this.http.get<any[]>(this.apiUrl, { withCredentials: true });
+    getProducts(page: PageModel): Observable<any[]> {
+        return this.http.post<any[]>(this.apiUrl, page, { withCredentials: true });
     }
 
     getProduct(id: number): Observable<any> {

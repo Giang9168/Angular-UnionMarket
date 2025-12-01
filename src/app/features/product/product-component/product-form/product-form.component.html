@@ -1,23 +1,135 @@
 <div class="product-form-container">
     <h3>{{ isEditMode ? 'Chỉnh sửa sản phẩm' : 'Thêm sản phẩm mới' }}</h3>
     <form [formGroup]="formnew">
-        <div class="form-group">
-            <label for="productName">Tên sản phẩm</label>
-            <input id="productName" type="text" formControlName="name" placeholder="Ví dụ: Sách Angular">
-        </div>
-        <div class="form-group">
-            <label for="productPrice">Giá</label>
-            <input id="productPrice" type="number" formControlName="price" placeholder="Ví dụ: 150000">
-        </div>
-        <div class="form-group">
-            <label for="productPrice">Mô tả</label>
-            <input id="productPrice" type="text" formControlName="description" placeholder="Mô tả">
+
+        <div class="row">
+            <div class="col-2 sidebar">
+
+                <div class="image-box">
+                    <img src="assets/no-image.png" alt="">
+                </div>
+
+                <button class="btn btn-light w-100 mt-2">Thêm ảnh</button>
+
+                <div class="mt-4">
+                    <label class="fw-bold">Thuộc tính sản phẩm</label>
+                    <button class="btn btn-danger w-100 mt-2">+ Thêm mới</button>
+                </div>
+
+            </div>
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-12 m-0">
+                        <div class="form-group">
+                            <label for="productName">Tên sản phẩm</label>
+                            <div class="row">
+                                <div class="col-10">
+                                    <input id="productName" type="text" formControlName="name"
+                                        placeholder="Ví dụ: Sách Angular">
+                                </div>
+                                <div class="col-2 p-0 d-flex justify-content-center align-items-center">
+                                    <button class="btn btn-danger ">+</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-12 m-0">
+                        <div class="form-group">
+                            <label for="productName">Tên sản phẩm</label>
+                            <div class="row">
+                                <div class="col-10">
+                                    <input id="productName" type="text" formControlName="name"
+                                        placeholder="Ví dụ: Sách Angular">
+                                </div>
+                                <div class="col-2 p-0 d-flex justify-content-center align-items-center">
+                                    <button class="btn btn-danger ">+</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 m-0">
+                        <div class="form-group">
+                            <label for="productName">Tên sản phẩm</label>
+                            <div class="row">
+                                <div class="col-10">
+                                    <input id="productName" type="text" formControlName="name"
+                                        placeholder="Ví dụ: Sách Angular">
+                                </div>
+                                <div class="col-2 p-0 d-flex justify-content-center align-items-center">
+                                    <button class="btn btn-danger ">+</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 m-0">
+                        <div class="form-group">
+                            <label for="productName">Tên sản phẩm</label>
+                            <div class="row">
+                                <div class="col-10">
+                                    <input id="productName" type="text" formControlName="name"
+                                        placeholder="Ví dụ: Sách Angular">
+                                </div>
+                                <div class="col-2 p-0 d-flex justify-content-center align-items-center">
+                                    <button class="btn btn-danger ">+</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <label for="productName">Tên sản phẩm</label>
+                            <input id="productName" type="text" formControlName="name"
+                                placeholder="Ví dụ: Sách Angular">
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <label for="productPrice">Giá</label>
+                            <input id="productPrice" type="number" formControlName="price" placeholder="Ví dụ: 150000">
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <label for="productPrice">Mô tả</label>
+                            <input id="productPrice" type="text" formControlName="description" placeholder="Mô tả">
+                        </div>
+
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <label for="productPrice">Mô tả</label>
+                            <input id="productPrice" type="text" formControlName="description" placeholder="Mô tả">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-sm-12 col-md-12">
+                <div class="form-actions">
+                    <button class="btn-cancel" (click)="cancel()">Hủy</button>
+                    <button class="btn-save" (click)="buttonFormAddorUpdate()"> {{ isEditMode ? 'Update' : 'Add'
+                        }}</button>
+                </div>
+            </div>
         </div>
 
-        <div class="form-actions">
-            <button class="btn-cancel" (click)="cancel()">Hủy</button>
-            <button class="btn-save" (click)="buttonFormAddorUpdate()"> {{ isEditMode ? 'Update' : 'Add'
-                }}</button>
-        </div>
+
+
+
+
     </form>
 </div>

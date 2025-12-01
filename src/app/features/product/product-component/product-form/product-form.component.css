@@ -74,7 +74,7 @@
 }
 
 .btn-save, .btn-cancel {
-  padding: 10px 20px;
+  padding: 0px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -88,4 +88,16 @@
 .btn-save {
   background-color: #007bff;
   color: white;
+}
+.sidebar {
+  border-right: 1px solid #ddd;
+}
+.image-box {
+  width: 100%;
+  height: 200px;
+  background: #f1f1f1;
+  border: 1px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -7,3 +7,8 @@ export interface Category {
     icon: IconDefinition;
     children?: Category[]; // danh mục con
 }
+
+export interface PageModel {
+    page: number,
+    pageSize: number
+}

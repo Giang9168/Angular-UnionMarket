@@ -34,6 +34,7 @@
     "express": "^4.18.2",
     "jwt-decode": "^4.0.0",
     "ngx-cookie-service": "^20.1.0",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

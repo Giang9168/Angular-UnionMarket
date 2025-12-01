@@ -1,95 +1,95 @@
 :host {
+  height: 100vh;
   display: block;
 }
 
+/* Sidebar: chia 2 phần: header + menu */
 .sidebar {
   height: 100vh;
   background-color: #ffffff;
-  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
- h2 {
+
+/* PHẦN HEADER – CỐ ĐỊNH */
+.sidebar h2 {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
   font-family: "Bungee Spice", sans-serif;
-  font-weight: 400;
-  font-style: normal;
   text-align: center;
   padding: 18px;
   background-color: #ffffff;
   margin: 0;
-  color: #ffffff;
   font-size: 18px;
-  border-radius: 6px;
+
 }
 
+/* CHỈ PHẦN MENU ĐƯỢC CUỘN */
 .nav-list {
+  flex: 1;
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow-y: auto;
 }
 
+/* Thanh cuộn đẹp hơn (optional) */
+.nav-list::-webkit-scrollbar {
+  width: 6px;
+}
+.nav-list::-webkit-scrollbar-thumb {
+  background: #f5e7e7;
+  border-radius: 10px;
+}
+.nav-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Nav item */
 .nav-item {
   display: flex;
-  color: black;
   align-items: center;
   padding: 12px 20px;
+  color: black;
+  border-bottom: #dfd1da solid 1px;
   text-decoration: none;
-  border-bottom: #a2357c solid 1px;
-  transition: background-color 0.3s ease, transform 0.5s ease;;
   cursor: pointer;
-  position: relative; /* Cho mũi tên dropdown */
+  transition: 0.3s;
 }
 
 .nav-item fa-icon {
   width: 20px;
   margin-right: 15px;
-  font-size: 1.1rem;
-}
-
-.nav-item .nav-text {
-  flex-grow: 1;
 }
 
 .nav-item:hover {
-  color: #a2357c;
+  color: #ca4b4b;
   font-weight: bold;
-  transform: translate(-8px);
+  transform: translateX(6px);
 }
 
-/* Style cho link đang active */
+/* active */
 .nav-item.active {
-  color: #a2357c;
+  color:  #ca4b4b;
   font-weight: bold;
 }
 
-/* Style cho menu có con */
-.has-submenu .submenu-arrow {
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #ecf0f1;
-  transition: transform 0.3s ease;
-}
-
-/* Xoay mũi tên khi menu được mở */
-li.open > .has-submenu .submenu-arrow {
-  transform: rotate(180deg);
-}
-
-/* Style cho menu con */
+/* menu con */
 .submenu {
   list-style: none;
   padding-left: 0;
-  background-color: #dfe2e4;
+  background: #dfe2e4;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-out;
+  transition: max-height .4s ease;
+}
+
+li.open .submenu {
+  max-height: 600px;
 }
 
 .submenu .nav-item {
-  padding-left: 45px; /* Thụt vào so với menu cha */
-}
-
-/* Hiệu ứng xổ ra của menu con */
-li.open .submenu {
-  max-height: 500px; /* Một giá trị đủ lớn để chứa hết các item */
+  padding-left: 45px;
 }

@@ -6,6 +6,7 @@
 }
 
 .side {
+  
   background-color: rgb(255, 255, 255);
 }
 app-sidebar{
@@ -14,7 +15,7 @@ app-sidebar{
 .main-content {
   display: grid;
   grid-template-rows: 3fr 20fr; /* 1/20 và phần còn lại của 4/5 */
-  background-color: #edefe9;
+  background-color: #efeeee;
 }
 .small{
  display: flex;
@@ -26,8 +27,9 @@ app-header{
   width: 100%;
 }
 .maint{
-  width: 90%;
+  width: 95%;
   margin:0 auto ;
+  padding: 20px;
   border-radius:20px ;
-  background-color: rgb(230, 221, 218);
+  background-color: rgb(255, 255, 255);
 }

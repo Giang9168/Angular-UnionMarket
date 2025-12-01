@@ -1,14 +1,14 @@
 .navbare {
   display: flex;
   justify-content: space-between;
-  background-color: #bec1cd;
+  background-color: #ffffff;
   padding: 10px 20px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3), -2px -2px 5px rgba(255,255,255,0.2);
   border-radius: 10px;
-  width: 90%;
+  width: 95%;
   flex: 0 0 auto; 
   margin: 0 auto;
-  color: rgb(249, 248, 248);
+  color: rgb(242, 91, 91);
 }
 .logos {
   font-size: 20px;
@@ -24,7 +24,7 @@
 }
 
 .nav-linkst li a {
-  color: white;
+  color: rgb(201, 77, 77);
   text-decoration: none;
   font-weight: 500;
 }
