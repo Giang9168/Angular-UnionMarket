@@ -9,8 +9,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PageModel } from '../../../../shared/models/category.model';
-import { NgxPaginationModule } from 'ngx-pagination';
-
+import { FormsModule } from '@angular/forms'; // 👈 Bắt buộc để dùng [(ngModel)]
+import { NgSelectModule } from '@ng-select/ng-select';
+import { AppQthtApiService, CategoryTreeDto, } from '../../../../shared/data/qtht-union-market';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +21,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProductFormComponent,
     CommonModule,
     MatTableModule,
-    NgxPaginationModule,
+    FormsModule,
+    NgSelectModule,
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
@@ -31,6 +33,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 })
 export class ProductListComponent implements OnInit {
 
+  categories: any;
+  selectedId:any;
   products: any[] = [];   // ✅ BỎ MatTableDataSource
   totalRecords = 0;
 
@@ -46,15 +50,75 @@ export class ProductListComponent implements OnInit {
 
   selectedProduct: any | null = null;
   selectId = 0;
-
+flatCategories: any[] = [];
   productIdToDelete: number | null = null;
+  treeData: CategoryTreeDto[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,private qthtt:AppQthtApiService) { }
 
   ngOnInit(): void {
     this.loadProducts();
+    this.qthtt.categoryTree().subscribe((res:any)=>{
+      this.treeData = res.data;
+      this.flatCategories= this.flattenTree(this.treeData);
+      this.refreshVisibleCategories();
+    });
   }
 
+toggleNode(item: any, event: Event) {
+    // Chặn sự kiện để ng-select không bị đóng hoặc chọn nhầm dòng
+    event.stopPropagation();
+    event.preventDefault();
+
+    // Đổi trạng thái đóng/mở
+    item.expanded = !item.expanded;
+
+    // Tính toán lại danh sách hiển thị
+    this.refreshVisibleCategories();
+  }
+checkExampleVisibility(item: any): boolean {
+    // Tìm cha của item này trong danh sách allCategories
+    // Lưu ý: Để tối ưu, bạn nên lưu parentId vào item khi flatten.
+    // Ở đây mình giả định bạn tìm cha bằng cách duyệt mảng (hơi chậm nếu dữ liệu lớn)
+    // Cách tốt nhất: Lúc flatten, gán luôn `item.parentRef = nodeParent`
+    
+    // 👇 CÁCH SỬA LẠI FLATTEN ĐỂ LOGIC NÀY DỄ HƠN (Xem Bước 1.1 bên dưới)
+    if (!item.parentRef) return true; // Là gốc
+    return item.parentRef.expanded && this.checkExampleVisibility(item.parentRef);
+  }
+  visibleCategories: any[] = [];
+  allCategories: any[] = [];
+refreshVisibleCategories() {
+    this.visibleCategories = this.allCategories.filter(item => {
+      // Level 0 luôn hiện
+      if (item.level === 0) return true;
+      
+      // Các level khác: Phải tìm xem cha của nó có đang mở không
+      // (Cách đơn giản: Duyệt ngược lên hoặc dùng đệ quy check visibility)
+      // Dưới đây là cách check nhanh dựa trên mảng phẳng:
+      return this.checkExampleVisibility(item);
+    });
+  }
+
+  flattenTree(nodes: CategoryTreeDto[], level: number = 0, result: any[] = [], parent: any = null): any[] {
+    for (const node of nodes) {
+      const newItem = { 
+        id: node.id, 
+        name: node.name, 
+        level: level,
+        hasChildren: node.children && node.children.length > 0,
+        expanded: false, 
+        parentRef: parent // 👈 Lưu tham chiếu cha vào đây
+      };
+      
+      result.push(newItem);
+
+      if (node.children && node.children.length > 0) {
+        this.flattenTree(node.children, level + 1, result, newItem); // Truyền newItem làm cha của vòng sau
+      }
+    }
+    return result;
+}
   // ===== LOAD DATA WITH PAGINATION =====
   loadProducts() {
     this.productService.getProducts(this.pageModel).subscribe((res: any) => {

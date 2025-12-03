@@ -1,5 +1,32 @@
 <div class="table-header-controls">
     <h2>Danh sách sản phẩm</h2>
+    <ng-select [items]="visibleCategories"
+           bindLabel="name"
+           bindValue="id"
+           [(ngModel)]="selectedId"
+           (change)="loadProducts()"
+           placeholder="Chọn danh mục...">
+
+    <ng-template ng-option-tmp let-item="item">
+        <div [style.padding-left.px]="item.level * 20" class="d-flex align-items-center">
+            
+            <span *ngIf="item.hasChildren" 
+                  (mousedown)="toggleNode(item, $event)"
+                  style="cursor: pointer; margin-right: 5px; font-weight: bold; width: 15px; display: inline-block;">
+                
+                {{ item.expanded ? '-' : '+' }}
+            
+            </span>
+
+            <span *ngIf="!item.hasChildren" style="width: 20px; display: inline-block;"></span>
+
+            <span>{{ item.name }}</span>
+        </div>
+    </ng-template>
+
+</ng-select>
+
+
     <button class=" btn btn-primary" (click)=" add()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path
@@ -86,10 +113,13 @@
 <ng-template #noData>
     <p>Không có sản phẩm nào để hiển thị.</p>
 </ng-template>
+<div class="paginator-shell">
 
-<mat-paginator [length]="totalRecords" [pageSize]="pageModel.pageSize" [pageIndex]="pageModel.page - 1"
+    <mat-paginator  [length]="totalRecords" [pageSize]="pageModel.pageSize" [pageIndex]="pageModel.page - 1"
     [pageSizeOptions]="[5,10,20,50]" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
+</div>
+
 
 
 <div class="modal fade" id="xacNhanXoaModal" tabindex="-1" aria-labelledby="xacNhanXoaModalLabel" aria-hidden="true">

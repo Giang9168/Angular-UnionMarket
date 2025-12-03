@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './features/auth/login/auth.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { provideServerRendering } from '@angular/ssr';
+import { APP_QTHT_URL } from './shared/data/qtht-union-market';
 
 export const AUTH_SERVICE_TOKEN = new InjectionToken<AuthService>('Auth Service');
 
@@ -21,5 +22,5 @@ export const appConfig: ApplicationConfig = {
       },
     ])
   ),
-  provideRouter(routes), provideClientHydration(withEventReplay(),)]
+  provideRouter(routes), provideClientHydration(withEventReplay(),),{ provide: APP_QTHT_URL, useValue: 'http://localhost:5193' },]
 };

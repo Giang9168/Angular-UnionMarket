@@ -19,11 +19,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     return of(true);
   }
 
-  // Nếu user đã có trong AuthService thì cho qua
-  // if (authService.isAuthenticated()) {
-  //   console.log("a");
-  //   return true;
-  // }
+  
   console.log("a");
   return authService.initAuthCheck().pipe(
     map(user => {
