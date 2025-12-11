@@ -1,1 +1,101 @@
-<p>ordersell works!</p>
+<!-- ordersell.component.html -->
+<div class="ordersell-wrapper">
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="date-range">
+        <label>Từ</label>
+        <input type="date" class="date-input" [(ngModel)]="filter.fromDate" />
+        <label>Đến</label>
+        <input type="date" class="date-input" [(ngModel)]="filter.toDate" />
+      </div>
+  
+      <div class="search">
+        <input type="text" placeholder="Tìm kiếm theo từ khoá" [(ngModel)]="filter.search" />
+        <button class="btn search-btn" title="Tìm kiếm" (click)="onSearch()">🔍</button>
+      </div>
+  
+      <div class="actions">
+        <button class="btn pink" (click)="deleteSelected()">XÓA ĐƠN ({{selectedCount}})</button>
+        <button class="btn pink" (click)="approveSelected()">DUYỆT ĐƠN</button>
+        <button class="btn nav" (click)="goPrevPage()">◀</button>
+        <button class="btn nav" (click)="goNextPage()">▶</button>
+      </div>
+  
+      <div class="top-right">
+        <button class="btn pink" (click)="addOrder()">THÊM MỚI</button>
+        <button class="btn pink">THỐNG KÊ</button>
+        <button class="btn pink">IN ĐƠN ({{selectedCount}})</button>
+      </div>
+    </div>
+  
+    <!-- Summary / total -->
+    <div class="summary">
+      <span>Tổng số bản ghi: <strong>{{totalRecords}}</strong></span>
+    </div>
+  
+    <!-- Table -->
+    <div class="table-container">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th class="checkbox-col">
+              <input type="checkbox" (change)="toggleAll($event.target.checked)" />
+            </th>
+            <th>Nguồn đơn</th>
+            <th>Số ĐT</th>
+            <th>Số ĐT người nhận</th>
+            <th>Mã KH</th>
+            <th>Tên khách hàng</th>
+            <th>Hình thức thanh toán</th>
+            <th>Trạng thái đơn hàng</th>
+            <th>Địa chỉ nhận hàng</th>
+            <th>Sản phẩm</th>
+            <th class="actions-col">Chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders; let i = index">
+            <td><input type="checkbox" [(ngModel)]="order.isSelected" (change)="updateSelectedCount()" /></td>
+            <td>{{order.source}}</td>
+            <td>{{order.phone}}</td>
+            <td>{{order.receiverPhone}}</td>
+            <td>{{order.customerCode}}</td>
+            <td>{{order.customerName}}</td>
+            <td>{{order.paymentMethod}}</td>
+            <td>{{order.status}}</td>
+            <td>{{order.address}}</td>
+            <td>{{order.product}}</td>
+            <td><button (click)="detailOrder(order)">Xem</button></td>
+          </tr>
+  
+          <tr *ngIf="orders.length === 0">
+            <td colspan="11" style="text-align:center;">Không có dữ liệu để hiển thị</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Pagination / footer -->
+    <div class="table-footer">
+      <div class="pager-left">
+        </div>
+    
+      <div class="pager-right">
+        <button class="btn paging" (click)="goPrevPage()">⏮</button>
+        <button class="btn paging" (click)="goPrevPage()">◀</button>
+        
+        <select class="page-size" [(ngModel)]="pageSize">
+          <option>10</option>
+          <option>25</option>
+          <option>50</option>
+        </select>
+    
+        <button class="btn paging" (click)="goNextPage()">▶</button>
+        <button class="btn paging" (click)="goNextPage()">⏭</button>
+        
+        <span>{{ (page-1)*pageSize+1 }} - {{ page*pageSize > totalRecords ? totalRecords : page*pageSize }} trong {{totalRecords}} bản ghi</span>
+      </div>
+    </div>
+  </div>
+  

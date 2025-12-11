@@ -1,0 +1,116 @@
+<div class="pn-container">
+    <!-- Header -->
+    <div class="pn-header">
+      <div class="pn-title">Phiếu nhập hàng</div>
+      <button class="pn-close" aria-label="close" (click)="close()">✖</button>
+
+    </div>
+  
+    <div class="pn-body">
+      <!-- Left sidebar form -->
+      <aside class="pn-sidebar">
+        <div class="card">
+          <div class="card-row">
+            <label class="label">Loại phiếu</label>
+            <select class="input">
+              <option>Nhập mua</option>
+              <option>Nhập trả</option>
+            </select>
+          </div>
+  
+          <div class="card-row">
+            <label class="label">Mã</label>
+            <input class="input" placeholder="Tự nhập đê" readonly />
+          </div>
+  
+          <div class="card-row supplier-buttons">
+            <button class="btn small green">Nhà cung cấp</button>
+            <button class="btn small">Shop khác</button>
+          </div>
+  
+          <div class="card-row">
+            <label class="label">Chọn nhà cung cấp <span class="required">*</span></label>
+            <select class="input">
+              <option value="">-- Chọn --</option>
+              <option>Nhà cung cấp A</option>
+              <option>Nhà cung cấp B</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="card">
+          <div class="card-row">
+            <label class="label">Số hoá đơn</label>
+            <input class="input" placeholder="" />
+          </div>
+  
+          <div class="card-row">
+            <label class="label">Ngày tạo phiếu</label>
+            <input class="input" type="date" value="2025-12-10" />
+          </div>
+  
+          <div class="card-row">
+            <label class="label">Trạng thái thanh toán</label>
+            <div class="radio-row">
+              <label><input type="radio" name="tt" checked /> Chưa thanh toán</label>
+              <label><input type="radio" name="tt" /> Đã thanh toán</label>
+            </div>
+          </div>
+        </div>
+  
+        <div class="card">
+          <label class="label">Ghi chú</label>
+          <textarea class="textarea" rows="6" placeholder="Ghi chú..."></textarea>
+        </div>
+      </aside>
+  
+      <!-- Main content -->
+      <main class="pn-main">
+        <div class="search-row">
+          <input class="search-input" placeholder="Nhập mã sản phẩm hoặc tên sản phẩm" />
+          <button class="btn search-btn">🔍</button>
+        </div>
+  
+        <div class="table-card">
+          <div class="table-top">
+            <button class="btn primary add-product">THÊM MỚI SP</button>
+          </div>
+  
+          <table class="pn-table">
+            <thead>
+              <tr>
+                <th>H.Ảnh</th>
+                <th>Mã mẫu</th>
+                <th>Sản phẩm/Mã SP</th>
+                <th>Size/Màu</th>
+                <th>Thuộc tính</th>
+                <th>Giá nhập</th>
+                <th>Số lượng</th>
+                <th>Tồn kho</th>
+                <th>Thành tiền</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="empty">
+                <td colspan="9">No records available.</td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <div class="summary">
+            <span>Tổng Tiền: <strong>0 VNĐ</strong></span>
+          </div>
+        </div>
+      </main>
+    </div>
+  
+    <!-- Footer actions -->
+    <div class="pn-footer">
+      <div class="footer-left"></div>
+      <div class="footer-right">
+        <button class="btn outline" (click)="close()">ĐÓNG</button>
+        <button class="btn primary save" (click)="saveAndClose()">💾 LƯU VÀ ĐÓNG</button>
+      </div>
+    </div>
+  </div>
+  

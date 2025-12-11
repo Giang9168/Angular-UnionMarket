@@ -30,7 +30,7 @@ export const ADMIN_ROUTES: Routes = [
 
             },
             {
-                path: 'orderbuy', loadComponent: () => import('./admin-component/Inventory/orderbuy/orderbuy.component').then(m => m.OrderbuyComponent)
+                path: 'orderbuy', loadComponent: () => import('./admin-component/Inventory/nhaphang/nhaphang.component').then(m => m.NhaphangComponent)
 
             },
             {

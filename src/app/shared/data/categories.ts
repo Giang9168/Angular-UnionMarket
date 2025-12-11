@@ -28,8 +28,8 @@ export const CATEGORIES: Category[] = [
     {
         name: 'Xuất Nhập ',
         children: [
-            { name: 'Nhập Hàng', path: 'ordersell', icon: faStar, isOpen: false },
-            { name: 'Xuất Bán', path: 'orderbuy', icon: faStar, isOpen: false },
+            { name: 'Xuất hàng', path: 'ordersell', icon: faStar, isOpen: false },
+            { name: 'Nhập hàng', path: 'orderbuy', icon: faStar, isOpen: false },
             { name: 'Trả Hàng', path: 'trahang', icon: faStar, isOpen: false }
         ], icon: faStar,
         isOpen: false

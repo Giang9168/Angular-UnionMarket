@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderbuyComponent } from './orderbuy.component';
+import { NhaphangComponent } from './nhaphang.component';
 
-describe('OrderbuyComponent', () => {
-  let component: OrderbuyComponent;
-  let fixture: ComponentFixture<OrderbuyComponent>;
+describe('NhaphangComponent', () => {
+  let component: NhaphangComponent;
+  let fixture: ComponentFixture<NhaphangComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrderbuyComponent]
+      imports: [NhaphangComponent]  // standalone component
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OrderbuyComponent);
+    fixture = TestBed.createComponent(NhaphangComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -21,3 +21,5 @@ describe('OrderbuyComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
